@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modern QR Code Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">QR Code Generator</h1>
+
+    <section class="card">
+      <label for="urlInput" class="label">Enter URL or text</label>
+      <div class="input-row">
+        <input id="urlInput" class="input" type="text" placeholder="https://example.com or any text" value="https://www.example.com" />
+        <button id="generateBtn" class="btn primary" aria-label="Generate QR Code">Generate</button>
+      </div>
+
+      <div class="options-grid">
+        <label>
+          Size:
+          <select id="sizeSelect" class="select">
+            <option value="128">128px</option>
+            <option value="192" selected>192px</option>
+            <option value="256">256px</option>
+            <option value="384">384px</option>
+          </select>
+        </label>
+
+        <label>
+          Error correction:
+          <select id="ecSelect" class="select">
+            <option value="L">L (Low)</option>
+            <option value="M" selected>M (Medium)</option>
+            <option value="Q">Q (Quartile)</option>
+            <option value="H">H (High)</option>
+          </select>
+        </label>
+        
+        <label class="color-label">
+          Color:
+          <input type="color" id="colorInput" class="color-picker" value="#0b6cf8" aria-label="QR Code Color" />
+        </label>
+      </div>
+
+      <div id="qrcodeWrap" class="qrcode-wrap" aria-live="polite">
+        <div id="qrcode" class="qrcode"></div>
+        <p id="previewNote" class="note">Your QR will appear here after you click <strong>Generate</strong>.</p>
+      </div>
+
+      <div class="controls">
+        <button id="downloadBtn" class="btn" disabled>Download PNG</button>
+        <button id="copyBtn" class="btn" disabled>Copy Text</button>
+        </div>
+
+      <p id="feedback" class="feedback" aria-live="assertive"></p>
+    </section>
+
+    <footer class="footer">
+      <small>Tip: Test the QR using your phone camera or a QR reader app.</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
